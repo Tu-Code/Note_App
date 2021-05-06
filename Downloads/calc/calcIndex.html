@@ -16,6 +16,7 @@
             <form >
                     <label for="CHEM">Enter CHEM grade:</label>
                         <select name="CHEM" id='CHEM'>
+                            <option value=""></option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="C">C</option>
@@ -28,6 +29,7 @@
     
                     <label for="PHY">Enter PHY grade:</label>
                         <select name="PHY" id='PHY'>
+                            <option value=""></option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="C">C</option>
@@ -40,6 +42,7 @@
             
                     <label for="MATH">Enter MATH grade:</label>
                         <select name="MATH" id='MATH'>
+                            <option value=""></option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="C">C</option>
@@ -52,6 +55,7 @@
 
                     <label for="COSC111">Enter COSC111 grade:</label>
                         <select name="COSC111" id='COSC111'>
+                            <option value=""></option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="C">C</option>
@@ -64,6 +68,7 @@
                
                     <label for="GEDS131">Enter GEDS 131 grade:</label>
                         <select name="GEDS131" id = 'GEDS131'>
+                            <option value=""></option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="C">C</option>
@@ -76,6 +81,7 @@
                 
                     <label for="GEDS101">Enter GEDS 101 grade:</label>
                         <select name="GEDS101" id = 'GEDS101'>
+                            <option value=""></option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="C">C</option>
@@ -88,6 +94,7 @@
                 
                     <label for="GEDS105">Enter GEDS 105 grade:</label>
                         <select name="GEDS105" id = 'GEDS105'>
+                            <option value=""></option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="C">C</option>
@@ -98,7 +105,8 @@
                             
                         </select>
                     </br>
-                <button type = 'button' onclick='submitButton()'>Submit</button></div></br> 
+                <button>Submit</button>
+            </div></br> 
                <!-- <input type = 'Submit' value = 'Submit' onclick = 'sumbitButton()' ></br> -->
                 Your GPA is: <input type="text" id='ans' name='ans'></br>
                 
@@ -109,216 +117,83 @@
     </body>
 
     <script>
-        var phy = document.getElementById('PHY');
-        var phy_s = 0;
-
-        var chem = document.getElementById('CHEM');
-        var chem_s = 0;
-
-        var math = document.getElementById('MATH');
-        var math_s = 0;
-
-        var cosc111 = document.getElementById('COSC111');
-        var cosc111_s = 0;
-
-        var geds131 = document.getElementById('GEDS131');
-        var geds131_s = 0;
-
-        var geds101 = document.getElementById('GEDS101');
-        var geds101_s = 0;
-
-        var geds105 = document.getElementById('GEDS105');
-        var geds105_s = 0;
+        //declaring and grabbing the HTML elements
+        const select = document.querySelectorAll('select')
+        const button = document.querySelector('button')
+        const ans = document.querySelector('#ans')
         
-        switch(phy.options[phy.selectedIndex].text){
-            case 'A':
-                phy_s = 15;
+       
+
+
+
+
+
+       
+                
+        button.addEventListener('click',(e)=>{
+            
+            //declearing the array needed to work in the loops and function
+            let grades = [];
+            let pointArray = [];
+            let total = 0;
+
+            select.forEach(select=>{
+            grades.push(select.value)
+        })  
+            console.log(grades)   
+            grades.forEach(grade=>{
+                let point=0;
+                switch (grade) {
+                case 'A':
+                    point = 15;
                 break;
-            case 'B':
-                phy_s = 12;
+                case 'B':
+                    point = 12;
                 break;
-            case 'C':
-                phy_s = 9;
+                case 'C':
+                    point = 9;
                 break;
-            case 'D':
-                phy_s = 6;
+                case 'D':
+                    point = 6;
                 break;
-            case 'E':
-                phy_s = 3;
+                case 'E':
+                    point = 3;
                 break;
-            case 'F':
-                phy_s = 0;
+                case 'F':
+                    point = 0;
                 break;
-            case 'NULL':
-                phy_s = 0;
+                case 'NULL':
+                    point = 0;
                 break;
-        }
+           }
+
+            //    as each option is looping, its storing the respective point in an array
+               pointArray.push(point) 
+               
+
+               //to clear the array to take new grades
+               grades=[];   
+   })
+               for (let index = 0; index < pointArray.length; index++) {
+                  total+=pointArray[index]
+                   
+               }
+               const cgpa= total/(pointArray.length);
+           
+           
+               //    to clear the array to take in new points
+               pointArray=[];
+            
+               ans.value=cgpa;
+              
+               // to prevent the page from automatically clearing
+               e.preventDefault();
+
+               
+        })
+            
         
-        switch(chem.options[chem.selectedIndex].text){
-            case 'A':
-                chem_s = 15;
-                break;
-            case 'B':
-                chem_s = 12;
-                break;
-            case 'C':
-                chem_s = 9;
-                break;
-            case 'D':
-                chem_s = 6;
-                break;
-            case 'E':
-                chem_s = 3;
-                break;
-            case 'F':
-                chem_s = 0;
-                break;
-            case 'NULL':
-                chem_s = 0;
-                break;
-        }
-    
-        switch(math.options[math.selectedIndex].text){
-            case 'A':
-                math_s = 15;
-                break;
-            case 'B':
-                math_s = 12;
-                break;
-            case 'C':
-                math_s = 9;
-                break;
-            case 'D':
-                math_s = 6;
-                break;
-            case 'E':
-                math_s = 3;
-                break;
-            case 'F':
-                math_s = 0;
-                break;
-            case 'NULL':
-                math_s = 0;
-                break;
-        }
-    
-        switch(cosc111.options[cosc111.selectedIndex].text){
-            case 'A':
-                cosc111_s = 15;
-                break;
-            case 'B':
-                cosc111_s = 12;
-                break;
-            case 'C':
-                cosc111_s = 9;
-                break;
-            case 'D':
-                cosc111_s = 6;
-                break;
-            case 'E':
-                cosc111_s = 3;
-                break;
-            case 'F':
-                cosc111_s = 0;
-                break;
-            case 'NULL':
-                cosc111_s = 0;
-                break;
-        }
-
-        switch(geds131.options[geds131.selectedIndex].text){
-            case 'A':
-                geds131_s = 10;
-                break;
-            case 'B':
-                geds131_s = 8;
-                break;
-            case 'C':
-                geds131_s = 6;
-                break;
-            case 'D':
-                geds131_s = 4;
-                break;
-            case 'E':
-                geds131_s = 2;
-                break;
-            case 'F':
-                geds131_s = 0;
-                break;
-            case 'NULL':
-                geds131_s = 0;
-                break;
-        }
-
-        switch(geds101.options[geds101.selectedIndex].text){
-            case 'A':
-                geds101_s = 10;
-                break;
-            case 'B':
-                geds101_s = 8;
-                break;
-            case 'C':
-                geds101_s = 6;
-                break;
-            case 'D':
-                geds101_s = 4;
-                break;
-            case 'E':
-                geds101_s = 2;
-                break;
-            case 'F':
-                geds101_s = 0;
-                break;
-            case 'NULL':
-                geds101_s = 0;
-                break;
-        }
-
-        switch(geds105.options[geds105.selectedIndex].text){
-            case 'A':
-                geds105_s = 10;
-                break;
-            case 'B':
-                geds105_s = 8;
-                break;
-            case 'C':
-                geds105_s = 6;
-                break;
-            case 'D':
-                geds105_s = 4;
-                break;
-            case 'E':
-                geds105_s = 2;
-                break;
-            case 'F':
-                geds105_s = 0;
-                break;
-            case 'NULL':
-                geds105_s = 0;
-                break;
-        }
         
-        var sum = 0;
-        sum = (phy_s + chem_s + math_s + cosc111_s +  geds131_s + geds101_s + geds105_s)/18;
-
-        // let select = document.getElementById('CHEM');
-        // let result = document.getElementById('ans');
-
-        // select.addEventListener('change', () => {
-        //     result.innerText = select.options[select.selectedIndex].text;
-        // });
-
-
-        // var form = document.getElementById('ans');
-        // function handleForm (event) {event.preventDefault();}
-        // form.addEventListener('ans',handleForm);
-        
-        // document.getElementById('ans').value = sum.toFixed(1);
-
-        function submitButton(){
-            document.getElementById('ans').value = sum.toFixed(1);
-            return false;
-        }
     </script>
 
 </html>
