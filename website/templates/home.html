@@ -1,22 +1,37 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-<h1 align='center'>Notes</h1>
-<ul class='list-group list-group-flush' id='notes'>
-    {% for note in user.notes %}
-    <li class='list-group-item'>{{ note.data}}
-        <button type='button' class='close' onClick='deleteNote({{ note.id }})'>
-            <span aria-hidden='true'>&times;</span>
-        </button>
-    </li>
-    {% endfor %}
-</ul>
 
-<form method="POST">
-    <textarea name='note' id='note' class='form-control'></textarea>
-    </br>
-    <div align='center'>
-        <button type='submit' class='btn btn-primary'>Add Note</button>
+
+<h1 align='center'>Diary</h1>
+<ul class='list-group list-group-flush' id='notes' >
+    
+    {% for note in user.notes %}
+    <div class='{{ user.id }}' style = ' display: none;'>
+        <li class='list-group-item'>{{ note.title }}
+            <button type='button' class='close' onclick='deleteNote({{ note.id }})'>
+                <span aria-hidden='true'>&times;</span>
+            </button>
+        </li>
+        <li class='list-group-item'>{{ note.data }}</li>
+        <br />
     </div>
-</form>
+    {% endfor %}
+    
+</ul>
+<div id='onAddNote' style='display: none;'>
+    
+    
+    <form method='POST'>
+        <textarea name='title' id='title' class='form-control' placeholder='Enter Title..'></textarea>
+        <textarea name='note' id='note' class='form-control' placheholder='Dear diary...'></textarea>
+        </br>
+        
+        <div align='center'>
+            <button type='submit' class='btn btn-primary' onClick='saveNote(title.value, note.value)'>Save Diary Note</button>
+        </div>
+    </form>
+
+</div>
+
 {% endblock %}

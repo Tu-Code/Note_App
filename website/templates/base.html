@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel='stylesheet' href='.\static\css\main.css'>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous"/>
         <title>{% block title %}Base{% endblock %}</title>
@@ -28,34 +29,98 @@
                 </div>
             </div>
         </nav>
-        <!-- error messages -->
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <!-- what kind of error? -->
-                {% if category == 'error' %}
-                <!-- danger -->
-                <div class='alert alert-danger alert-dismissable fade show' role='alert'>
-                    {{ message }}
-                    <button type='button' class='close' data-dismiss='alert'>
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+        <!-- side bar containing entries -->
+         <!-- error messages -->
+         {% with messages = get_flashed_messages(with_categories=true) %}
+         {% if messages %}
+             {% for category, message in messages %}
+                 <!-- what kind of error? -->
+                 {% if category == 'error' %}
+                 <!-- danger -->
+                 <div class='alert alert-danger alert-dismissable fade show' role='alert'>
+                     {{ message }}
+                     <button type='button' class='close' data-dismiss='alert'>
+                         <span aria-hidden="true">&times;</span>
+                     </button>
+                 </div>
+                 {% else %}
+                 <!-- success -->
+                 <div class='alert alert-success alert-dismissable fade show' role='alert'>
+                     {{ message }}
+                     <button type='button' class='close' data-dismiss='alert'>
+                         <span aria-hidden="true">&times;</span>
+                     </button>
+                 </div>
+                 {% endif %}
+             {% endfor %}
+         {% endif %}
+         {% endwith %}
+        <div>
+            <div class="container-fluid">
+                <div class="row flex-nowrap">
+                    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                            <!-- <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"> -->
+                            <span class="fs-5 d-none d-sm-inline" style='align-self: center;'>Diary Entries</span>
+                            <!-- </a> -->
+                            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                                
+                                <button class="notes__add" type="button" onClick='onAddNote()'>Add Note</button>
+                                <!-- </form> -->
+                               
+                                {% for note in user.notes %}
+                                <!-- <li class="nav-item">
+                                    <a href="#" class="nav-link align-middle px-0">
+                                        <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">{{ note.data }}</span>
+                                    </a>
+                                </li> -->
+
+                                <div class="notes" id="app" onClick="$(`.{{user.id}}`).show()">
+                                    <div class="notes__sidebar">
+                                        <div class="notes__list">
+                                            <div class="notes__list-item notes__list-item--selected">
+                                                {% if note.title.__len__() > 5 %}
+                                                <div class="notes__small-title">
+                                                    {{ note.title[0:8] }}
+                                                    {{ "..." }}
+                                                </div>
+                                                {% else %}
+                                                <div class="notes__small-title">
+                                                    {{ note.title }}
+                                                </div>
+                                                {% endif %}
+                                                
+                                                {% if note.data.__len__() > 10 %}                                                         
+                                                <div class="notes__small-body">
+                                                    {{ note.data[0:10] }}
+                                                    {{ "...." }}
+                                                </div>
+                                                {% else %}
+                                                <div class="notes__small-body">{{ note.data }}</div>
+                                                {% endif %}
+                                                <div class="notes__small-updated">{{ note.date }}</div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor%}
+                                
+                            </ul>
+                            <hr>
+                        
+                        </div>
+                    </div>
+                    
+                    <div class='container'>
+                        {% block content %}{% endblock %}
+                    </div>
                 </div>
-                {% else %}
-                <!-- success -->
-                <div class='alert alert-success alert-dismissable fade show' role='alert'>
-                    {{ message }}
-                    <button type='button' class='close' data-dismiss='alert'>
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-        {% endwith %}
-         <div class='container'>
-            {% block content %}{% endblock %}
+            </div>
         </div>
+        
+       
+        
         <script
         src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
