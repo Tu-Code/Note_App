@@ -9,12 +9,12 @@ function deleteNote(noteId){
         window.location.href = '/';
     })
 }
-let i = 0;
+// let i = 0;
 let onAddNote = () =>{
     document.getElementById('onAddNote').style.display = 'block';  
     document.getElementById('notes').style.display = 'none';  
 }
-let arrayOfNotes = []
+// let arrayOfNotes = []
 
 // 'clickedNote({{ note.title, note.data }})
 // document.getElementById("app").addEventListener("click", function() {

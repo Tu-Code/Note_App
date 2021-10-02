@@ -55,6 +55,7 @@
              {% endfor %}
          {% endif %}
          {% endwith %}
+         {% if user.is_authenticated %}
         <div>
             <div class="container-fluid">
                 <div class="row flex-nowrap">
@@ -75,7 +76,7 @@
                                     </a>
                                 </li> -->
 
-                                <div class="notes" id="app" onClick="$(`.{{user.id}}`).show()">
+                                <div class="notes" id="app" onclick="$(`.{{note.id}}`).show()">
                                     <div class="notes__sidebar">
                                         <div class="notes__list">
                                             <div class="notes__list-item notes__list-item--selected">
@@ -111,6 +112,7 @@
                         
                         </div>
                     </div>
+                    {% endif %}
                     
                     <div class='container'>
                         {% block content %}{% endblock %}

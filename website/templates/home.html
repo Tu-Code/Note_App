@@ -7,7 +7,8 @@
 <ul class='list-group list-group-flush' id='notes' >
     
     {% for note in user.notes %}
-    <div class='{{ user.id }}' style = ' display: none;'>
+    <div class='{{ note.id }}' style = ' display: none;'>
+    
         <li class='list-group-item'>{{ note.title }}
             <button type='button' class='close' onclick='deleteNote({{ note.id }})'>
                 <span aria-hidden='true'>&times;</span>
@@ -15,6 +16,7 @@
         </li>
         <li class='list-group-item'>{{ note.data }}</li>
         <br />
+       
     </div>
     {% endfor %}
     
@@ -22,13 +24,13 @@
 <div id='onAddNote' style='display: none;'>
     
     
-    <form method='POST'>
-        <textarea name='title' id='title' class='form-control' placeholder='Enter Title..'></textarea>
-        <textarea name='note' id='note' class='form-control' placheholder='Dear diary...'></textarea>
+    <form method='POST' class='notes'>
+        <input name='title' id='title' class='form-control' placeholder='Enter Title..'>
+        <textarea name='note' id='note' style='outline:none;' class='form-control'placeholder='Dear Diary..'></textarea>
         </br>
         
         <div align='center'>
-            <button type='submit' class='btn btn-primary' onClick='saveNote(title.value, note.value)'>Save Diary Note</button>
+            <button type='submit' class='btn btn-primary'>Save Diary Note</button>
         </div>
     </form>
 

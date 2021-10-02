@@ -1,9 +1,19 @@
+
 .notes {
+    outline: none;
     display: flex;
+    flex-direction: column;
     height: 100%;
 }
 #note{
-    border: none;
+    border:none;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    font-size: 1.52em;
+    line-height: 1.5em;
+    margin-top: 2em;
+    resize: none;
+    outline: none;
 }
 
 .notes * {
@@ -70,26 +80,19 @@
     flex-direction: column;
     padding: 2em 3em;
     flex-grow: 1;
-} */
+}
  
-.notes__title,
-.notes__body {
+#title,
+#note:focus{
     border: none;
     outline: none;
    
 }
 
-.notes__title {
+#title{
     width: 100%;
     border: none;
     font-size: 3em;
     font-weight: bold;
 }
 
-.notes__body {
-    flex-grow: 1;
-    font-size: 1em;
-    line-height: 1.5;
-    margin-top: 2em;
-    resize: none;
-}
