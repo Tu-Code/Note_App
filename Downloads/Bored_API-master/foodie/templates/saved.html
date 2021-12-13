@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block title %}Saved{% endblock %}
+{% block content %}
+    <div id='body'>    
+        <div id='saved_notes'>
+            {% if data %}
+                {%for ua in data%}
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <form method='DELETE'>
+                                    <div id="act-{{ua.id}}">
+                                        <div style='width: 420px; word-wrap: break-word;'>
+                                            <span>Activity: </span>{{ ua.activity [ 'activity' ] }}
+                                        </div>
+                                        <button type='button' class='close' onclick="deleteNote(`{{ua.id}}`)">
+                                            <!-- <span aria-hidden='true'><i class="fas fa-trash-alt">
+                                                <img src='./static/images/trash-alt-solid.svg'></i> -->
+                                            <!-- </span> -->
+                                            &times;
+                                        </button>
+                                        <div><span>Activity-type: </span>{{ ua.activity[ 'type' ] }}</div>
+                                        <div><span>Number of people needed: </span>{{ ua.activity['participants'] }}</div>
+                                        <div><span>Price: </span>{{ ua.activity['price'] }}</div>
+                                        {% if ua.activity['link']|length %} 
+                                            <div><span>Link: </span><a href = "{{ ua.activity['link'] }}">Click me!</a></div>
+                                        {% endif %}
+
+                                    </div>
+                                </form>
+                            </div>
+                           <!-- end of col-sm -->
+                        </div>
+                        <!-- end of column -->
+                    </div> 
+                    <!-- end of container -->
+                {% endfor %}
+            {% endif %}   
+        
+
+    </div>
+{% endblock %}

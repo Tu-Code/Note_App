@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id = 'body'>
+        <div id = 'display_row'>
+
+                <form  id='form' method='POST'  url_for('home') >
+                
+                    <div id='bored'><span>Bored!</span></div>
+                    
+                        <!-- <div id='sameHeight'>
+                                <select name="activity" id="activity" style="width:12em; height: 2.5em;">
+                                    {% if data %}
+                                        <option class="dropdown-item border-radius-md" value="choose" selected='selected' disabled='disabled'>&nbsp {{ data[ "type" ] }} </option>
+                                    {% else %}
+                                        <option class="dropdown-item border-radius-md" value="choose" selected='selected' disabled='disabled'> {{ data[ "type" ] }} </option>
+                                    {% endif %}
+                                    <option value="random">&nbspRandom</option>
+                                    <option value="charity">&nbspCharity</option>
+                                    <option value="cooking">&nbspCooking</option>
+                                    <option value="relaxation">&nbspRelaxation</option>
+                                    <option value="music">&nbspMusic</option>
+                                    <option value="busywork">&nbspBusy work</option>
+                                    <option value="recreational">&nbspRecreational</option>
+                                    <option value="social">&nbspSocial</option>
+                                    <option value="diy">&nbspDiy</option>
+                                </select>
+                            
+
+                            <button class="btn btn-primary" id='butt' type="submit" style='width:12em;'>Give me an activity</button>
+                        </div> -->
+                        <h1>Choose a book format</h1>
+                        <div class="select">
+                        <select name="format" id="format">
+                            {% if data %}
+                                        <option class="dropdown-item border-radius-md" value="choose" selected='selected' disabled='disabled'>&nbsp {{ data[ "type" ] }} </option>
+                                    {% else %}
+                                        <option class="dropdown-item border-radius-md" value="choose" selected='selected' disabled='disabled'> {{ data[ "type" ] }} </option>
+                                    {% endif %}
+                                    <option value="random">&nbspRandom</option>
+                                    <option value="charity">&nbspCharity</option>
+                                    <option value="cooking">&nbspCooking</option>
+                                    <option value="relaxation">&nbspRelaxation</option>
+                                    <option value="music">&nbspMusic</option>
+                                    <option value="busywork">&nbspBusy work</option>
+                                    <option value="recreational">&nbspRecreational</option>
+                                    <option value="social">&nbspSocial</option>
+                                    <option value="diy">&nbspDiy</option>
+                        </select>
+                        </div>
+                </form>
+
+        
+                {%if data != None%}
+                <div id='showActivity' >     
+                    <div style='width: 420px; word-wrap: break-word;'><span>Activity: </span>{{ data [ 'activity' ] }}</div>
+                    <div><span>Activity-type: </span>{{ data [ 'type' ] }}</div>
+                    <div><span>Number of people needed: </span>{{ data['participants'] }}</div>
+                    <div><span>Price: </span>{{ data['price'] }}</div>
+                    {% if data['link']|length %}
+                        <div><span>Link: </span>{{ data['link'] }}</div>
+                    {% endif %}
+                    <div><span><a id='butt' href="/saved?aid={{ data['id'] }}" style='width: 40%; margin-left: 30%;' class="btn btn-secondary" >Save Activity</a></span></div>
+                
+                </div> 
+                {%endif%}
+
+        </div>
+        
+    </div>
+{% endblock %}
