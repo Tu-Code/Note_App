@@ -1,51 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
     <div id = 'body'>
-        <div id = 'display_row'>
+        <!-- <div id = 'display_row'> -->
 
                 <form  id='form' method='POST'  url_for('home') >
                 
                     <div id='bored'><span>Bored!</span></div>
-                    
-                        <!-- <div id='sameHeight'>
-                                <select name="activity" id="activity" style="width:12em; height: 2.5em;">
-                                    {% if data %}
-                                        <option class="dropdown-item border-radius-md" value="choose" selected='selected' disabled='disabled'>&nbsp {{ data[ "type" ] }} </option>
-                                    {% else %}
-                                        <option class="dropdown-item border-radius-md" value="choose" selected='selected' disabled='disabled'> {{ data[ "type" ] }} </option>
-                                    {% endif %}
-                                    <option value="random">&nbspRandom</option>
-                                    <option value="charity">&nbspCharity</option>
-                                    <option value="cooking">&nbspCooking</option>
-                                    <option value="relaxation">&nbspRelaxation</option>
-                                    <option value="music">&nbspMusic</option>
-                                    <option value="busywork">&nbspBusy work</option>
-                                    <option value="recreational">&nbspRecreational</option>
-                                    <option value="social">&nbspSocial</option>
-                                    <option value="diy">&nbspDiy</option>
-                                </select>
-                            
-
+    
+                        <h1>Choose an activity type</h1>
+                        <div id='display_row'>
+                            <div class="select">
+                            <select name="activity" id="activity">
+                                {% if data %}
+                                            <option class="dropdown-item border-radius-md" value="choose" selected='selected' disabled='disabled'>&nbsp {{ data[ "type" ] }} </option>
+                                        {% else %}
+                                            <option class="dropdown-item border-radius-md" value="choose" selected='selected' disabled='disabled'> {{ data[ "type" ] }} </option>
+                                        {% endif %}
+                                        <option value="random">&nbspRandom</option>
+                                        <option value="charity">&nbspCharity</option>
+                                        <option value="cooking">&nbspCooking</option>
+                                        <option value="relaxation">&nbspRelaxation</option>
+                                        <option value="music">&nbspMusic</option>
+                                        <option value="busywork">&nbspBusy work</option>
+                                        <option value="recreational">&nbspRecreational</option>
+                                        <option value="social">&nbspSocial</option>
+                                        <option value="diy">&nbspDiy</option>
+                            </select>
+                            </div>
                             <button class="btn btn-primary" id='butt' type="submit" style='width:12em;'>Give me an activity</button>
-                        </div> -->
-                        <h1>Choose a book format</h1>
-                        <div class="select">
-                        <select name="format" id="format">
-                            {% if data %}
-                                        <option class="dropdown-item border-radius-md" value="choose" selected='selected' disabled='disabled'>&nbsp {{ data[ "type" ] }} </option>
-                                    {% else %}
-                                        <option class="dropdown-item border-radius-md" value="choose" selected='selected' disabled='disabled'> {{ data[ "type" ] }} </option>
-                                    {% endif %}
-                                    <option value="random">&nbspRandom</option>
-                                    <option value="charity">&nbspCharity</option>
-                                    <option value="cooking">&nbspCooking</option>
-                                    <option value="relaxation">&nbspRelaxation</option>
-                                    <option value="music">&nbspMusic</option>
-                                    <option value="busywork">&nbspBusy work</option>
-                                    <option value="recreational">&nbspRecreational</option>
-                                    <option value="social">&nbspSocial</option>
-                                    <option value="diy">&nbspDiy</option>
-                        </select>
                         </div>
                 </form>
 
@@ -64,7 +46,7 @@
                 </div> 
                 {%endif%}
 
-        </div>
+        <!-- </div> -->
         
     </div>
 {% endblock %}
