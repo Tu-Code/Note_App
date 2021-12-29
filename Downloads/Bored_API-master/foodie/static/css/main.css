@@ -1,14 +1,17 @@
 body {
+    font-family: 'Indie Flower', cursive;
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background: #23b499;
-    font-family: 'Open Sans', sans-serif;
-    color: #fff;
+    background: #FFAFBD;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffc3a0, #FFAFBD);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffc3a0, #FFAFBD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+
 }
 #body{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -16,52 +19,142 @@ body {
     display: flex;
     flex-direction: row;
 }
+@media only screen and (max-width: 300px) {
+    .option {
+       width: 40% !important;
+       height: 3em !important;
+    }
+    #butt{
+        width: 50%!important;
+        /* height: 3em !important; */
+        padding: 0;
+    }
+    #choose{
+        font-size: 1.5em!important;
+    }
+}
+
+@media only screen and (min-width: 400px) {
+    #choose{
+        font-size: 2em;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+   
+    #display_row{
+        height: 3em;
+    }
+    .btn{
+        padding: 0;
+    }
+    #choose{
+        font-size: 1.5em;
+    }
+    .flex-item{
+        width: 15em;
+    }
+}
+
 #bored{
-    font-size: 2em;
+    margin: 1em;
+    font-family: 'Moo Lah Lah', cursive;
+    font-size: 2.5em;
     display: flex;
     justify-content: center;
 }
+
+#showActivity{
+    background-color: #5c6664;
+    margin: 0.5em;
+    padding: 0.3em;
+    border-radius: 0.25em;
+    color: white;
+}
+#saved_notes{
+    /* padding-top: 5%; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    word-wrap: normal;
+}
+.flex-container {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    /* border: 1px solid silver; */
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+}
+.wrap{ 
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}   
+.flex-item {
+    font-family: 'Indie Flower', cursive;
+    flex-direction: row;
+    border-radius: 0.25em;
+    background: #D66D75;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #E29587, #D66D75);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #E29587, #D66D75); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    padding: 3px;
+    width: 18em;
+    /* height: 100px; */
+    margin: 10px;
+    
+    /* line-height: 100px; */
+    color: white;
+    /* font-weight: bold; */
+    font-size: 1.2em;
+    /* text-align: center; */
+  }
 select {
--webkit-appearance:none;
--moz-appearance:none;
--ms-appearance:none;
-appearance:none;
-outline:0;
-box-shadow:none;
-border:0!important;
-background: #5c6664;
-background-image: none;
-flex: 1;
-padding: 0 .5em;
-color:#fff;
-cursor:pointer;
-font-size: 1em;
-font-family: 'Open Sans', sans-serif;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    -ms-appearance:none;
+    appearance:none;
+    outline:0;
+    box-shadow:none;
+    border:0!important;
+    background: #5c6664;
+    background-image: none;
+    flex: 1;
+    padding: 0 .5em;
+    color:#fff;
+    cursor:pointer;
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
 }
 select::-ms-expand {
-display: none;
+    display: none;
 }
 .select {
-position: relative;
-display: flex;
-width: 15em;
-height: 3em;
-line-height: 3;
-background: #5c6664;
-overflow: hidden;
-border-radius: .25em;
+    position: relative;
+    display: flex;
+    width: 14em;
+    height: 3em!important;
+    line-height: 3;
+    background: #5c6664;
+    overflow: hidden;
+    border-radius: .25em;
 }
 .select::after {
-content: '\25BC';
-position: absolute;
-top: 0;
-right: 0;
-padding: 0 1em;
-background: #2b2e2e;
-cursor:pointer;
-pointer-events:none;
-transition:.25s all ease;
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #5d5e5e;
+    cursor:pointer;
+    pointer-events:none;
+    transition:.25s all ease;
 }
 .select:hover::after {
-color: #23b499;
+    color: white;
 }

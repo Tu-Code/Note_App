@@ -22,3 +22,9 @@ def delete_note(id):
             db.session.delete( activity )
             db.session.commit()
     return jsonify({"status": True})
+
+@controllers.route('/delete-notes/', methods=['GET'])
+def delete_notes():
+    num_activities_deleted = db.session.query(UserActivity).delete()
+    db.session.commit()
+    return jsonify({"num_activities_deleted ": num_activities_deleted })

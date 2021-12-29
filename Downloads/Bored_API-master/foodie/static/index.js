@@ -11,16 +11,10 @@ const deleteNote = id => fetch(`/delete-note/${id}`,{
     alert("deleted " + id)
 })
 
-// $(document).ready(function(){
-//     $('.data_content').on('click', function(){
-//         var data_id = $(this).data('rep');
-//         $.ajax({
-//             url: '/saved',
-//             type: 'get'
-//             data: {data_id: data_id},
-//             success: function(response){
-//                 var new_html = response.html
-//             }
-//         })
-//     })
-// })
+const deleteNotes = id => fetch(`/delete-notes/`,{
+    method: 'GET'
+}).then((_res) =>{
+    $(`#act-`).remove();
+    console.log('work')
+    window.location.href = '/saved';
+})
