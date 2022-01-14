@@ -16,14 +16,14 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
 
-    
+    # FLASK_APP="base.py"
     from .views import views
     from .auth import auth
 
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
 
-    from .models import User, Note
+    from .models import User
 
     create_database(app)
 

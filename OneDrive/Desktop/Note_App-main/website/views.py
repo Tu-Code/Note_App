@@ -5,11 +5,11 @@ from werkzeug.wrappers import request
 from flask import flash, request, jsonify
 from .models import Note
 from .forms import RequestResetForm, ResetPasswordForm
-from . import db, mail
+from . import db
 from flask_mail import Message
 import json
 #forgot pwd
-from .forms import EmailForm
+# from .forms import EmailForm
 from .models import User
 # from .util import send_email, ts
 views = Blueprint('views', __name__)
@@ -45,6 +45,7 @@ def delete_note():
     return jsonify({})
 
 def send_reset_email(user):
+    from . import mail
     token = user.get_reset_token()
     msg = Message('Password Reset Request',
                   sender='solarinsarah3@gmail.com',
