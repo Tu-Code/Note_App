@@ -1,9 +1,16 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+#body{
+    font-family: 'Poppins', sans-serif;
+}
 .notes {
     outline: none;
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+.alert{
+    margin-bottom: 0!important;
 }
 #note{
     border:none;
@@ -95,4 +102,42 @@
     font-size: 3em;
     font-weight: bold;
 }
-
+ul {
+    list-style-type: none;
+    padding: 0;
+    /* border: 2px solid #c141f4; */
+}
+@media all and (max-width: 500px) {
+    body {
+      font-size: 12px!important;
+    }
+    #side_bar{
+        width: 140px;
+    }
+    .notes__add{
+        width: 90px;
+    }
+    #title{
+        font-size: 2em;
+    }
+   
+}
+@media all and (max-width: 952px) {
+    #forgot{
+        /* position: absolute; */
+        right: 80px !important;
+    }
+}
+@media all and (max-width: 600px) {
+    #forgot{
+        /* position: absolute; */
+        right: 40px !important;
+    }
+}
+h3{
+    padding-top: 30px;
+} 
+#forgot{
+    position: absolute;
+    right: 125px;
+}

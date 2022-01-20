@@ -1,5 +1,4 @@
-{% extends "base.html" %} {% block title %}Login{% endblock %} {% block content
-    %}
+{% extends "base.html" %} {% block title %}Login{% endblock %} {% block content %}
     <form method="POST">
       <h3 align="center">Login</h3>
       <div class="form-group">
@@ -23,6 +22,9 @@
         />
       </div>
       <br />
-      <button type="submit" class="btn btn-primary">Login</button>
+      <div id='bottom_section'>
+         <button type="submit" class="btn btn-primary">Login</button>
+         <a href="{{ url_for('views.reset_request') }}" id='forgot'>Forgot Password?</a>
+      </div>
     </form>
     {% endblock %}
